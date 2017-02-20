@@ -1,6 +1,6 @@
 # Gossh (go-ssh)
 
-![GoDoc](https://godoc.org/github.com/Diggs/gossh?status.svg)
+[![GoDoc](https://godoc.org/github.com/Diggs/gossh?status.svg)](https://godoc.org/github.com/Diggs/gossh)
 
 Gossh provides a simple set of wrapper functions for interacting with remote
 servers over SSH.
