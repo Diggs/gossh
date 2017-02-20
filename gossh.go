@@ -141,7 +141,7 @@ func scanOutput(
 // RunRemoteCommand runs command on host:port as user. stdOutAndErr will be passed
 // a multiplexed stream containing stdout and stderr from the command. This chan
 // MUST be drained or command will deadlock. stdOutAndErr chan will be closed
-// once all data is read.
+// once all data is read or an error occurs
 // connectionTimeout is the maximum amount of time to wait for the TCP connection
 // to establish.
 // absoluteDeadline is the absolute time after which all i/o operations will fail
@@ -161,6 +161,7 @@ func RunRemoteCommand(
 	idleTimeout time.Duration,
 	stdOutAndErr chan string,
 	privateKeys ...[]byte) error {
+	defer close(stdOutAndErr)
 	client, con, err := CreateSSHClient(
 		user,
 		host,
